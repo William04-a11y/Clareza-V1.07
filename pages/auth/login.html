@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrar — Clareza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../css/variables.css" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/components.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+</head>
+<body data-layout="public" data-base="../../">
+
+  <div class="auth-shell">
+    <aside class="auth-shell__aside">
+      <a href="../../index.html" style="display:flex; align-items:center; gap: var(--space-3); font-family: var(--font-display); font-size: var(--fs-lg);">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.4" opacity="0.35"/>
+          <circle cx="14" cy="14" r="8.5" stroke="currentColor" stroke-width="1.4" opacity="0.65"/>
+          <circle cx="14" cy="14" r="4" fill="currentColor"/>
+        </svg>
+        Clareza
+      </a>
+
+      <div>
+        <h2 style="color: var(--color-text-inverse); max-width: 16ch;">Continue de onde parou.</h2>
+        <p style="color: rgba(245,247,245,0.75); max-width: 34ch; margin-top: var(--space-3);">
+          Suas sessões, prontuários e conversas estão organizados e prontos para você.
+        </p>
+      </div>
+
+      <p class="text-mono" style="font-size: var(--fs-xs); color: rgba(245,247,245,0.5);">Clareza v1.07 · ambiente de demonstração</p>
+    </aside>
+
+    <div class="auth-shell__form">
+      <div class="auth-card">
+        <span class="eyebrow">Bem-vindo(a) de volta</span>
+        <h1 style="font-size: var(--fs-2xl); margin-top: var(--space-2);">Entrar na sua conta</h1>
+        <p class="text-muted" style="margin-top: var(--space-2);">Acesse com o e-mail e senha cadastrados.</p>
+
+        <div id="loginFeedback" style="margin-top: var(--space-5);"></div>
+
+        <form id="loginForm" style="margin-top: var(--space-5);" novalidate>
+          <div class="field">
+            <label class="field__label" for="email">E-mail</label>
+            <input class="input" type="email" id="email" name="email" placeholder="voce@exemplo.com" autocomplete="email" />
+            <span class="field__error"></span>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="password">Senha</label>
+            <div class="input-group">
+              <input class="input" type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" />
+              <button type="button" class="input-group__icon" data-toggle-password="password"></button>
+            </div>
+            <span class="field__error"></span>
+          </div>
+
+          <div class="flex-between" style="margin-bottom: var(--space-5);">
+            <label class="checkbox-row">
+              <input type="checkbox" name="remember" />
+              Lembrar de mim
+            </label>
+            <a href="recuperar-senha.html" class="text-sm">Esqueci minha senha</a>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block btn--lg">Entrar</button>
+        </form>
+
+        <div class="alert alert--info" style="margin-top: var(--space-6);">
+          <div>
+            <div class="alert__title">Credenciais de demonstração</div>
+            <div class="text-sm">Psicólogo: <span class="text-mono">psicologo@clareza.demo</span> · Paciente: <span class="text-mono">paciente@clareza.demo</span><br/>Senha para ambos: <span class="text-mono">123456</span></div>
+          </div>
+        </div>
+
+        <p class="text-center text-sm" style="margin-top: var(--space-6);">
+          Ainda não tem conta? <a href="cadastro.html">Criar conta</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/utils.js"></script>
+  <script src="../../components/navbar.js"></script>
+  <script src="../../components/sidebar.js"></script>
+  <script src="../../components/footer.js"></script>
+  <script src="../../components/card.js"></script>
+  <script src="../../components/alert.js"></script>
+  <script src="../../components/modal.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/modal.js"></script>
+  <script src="../../js/dropdown.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

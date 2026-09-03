@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Clareza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../css/variables.css" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/components.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+</head>
+<body data-layout="app" data-role="paciente" data-active="dashboard" data-page-title="Dashboard" data-base="../../">
+
+  <div class="app-shell">
+    <div id="sidebarSlot"></div>
+    <div id="navbarSlot"></div>
+
+    <main class="app-main">
+      <div style="margin-bottom: var(--space-6);">
+        <span class="eyebrow">Sua jornada</span>
+        <h2 style="margin-top: var(--space-1);">Olá, Rafael 👋</h2>
+        <p class="text-muted" style="margin-top: var(--space-1);">Aqui está um resumo do seu acompanhamento.</p>
+      </div>
+
+      <div class="grid grid-split-wide" style="align-items:start; margin-bottom: var(--space-6);">
+        <!-- Próxima consulta -->
+        <div class="card" id="nextConsultaCard"></div>
+
+        <!-- Situação financeira -->
+        <div class="card">
+          <div class="card__title">Situação financeira</div>
+          <div id="situacaoFinanceira" style="margin-top: var(--space-4);"></div>
+          <div class="card__footer">
+            <a href="pagamentos.html" class="btn btn--ghost btn--sm">Ver pagamentos</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-split" style="align-items:start;">
+
+        <!-- Histórico de consultas -->
+        <section class="table-wrap">
+          <div class="flex-between" style="padding: var(--space-5); border-bottom: 1px solid var(--color-border);">
+            <h3>Histórico de consultas</h3>
+            <a href="consultas.html" class="text-sm">Ver todas</a>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Profissional</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="historicoTableBody"></tbody>
+          </table>
+        </section>
+
+        <!-- Avisos + documentos recentes -->
+        <section>
+          <div id="avisosArea" style="display:flex; flex-direction:column; gap: var(--space-3);"></div>
+
+          <div class="card" style="margin-top: var(--space-5);">
+            <div class="card__title">Documentos recentes</div>
+            <div id="documentosRecentesList" style="margin-top: var(--space-4);"></div>
+            <div class="card__footer">
+              <a href="documentos.html" class="btn btn--ghost btn--sm">Ver todos os documentos</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: detalhes da consulta -->
+  <div class="modal-backdrop" id="modalDetalhesConsulta" data-modal>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalConsultaTitle">
+      <div class="modal__header">
+        <h2 class="modal__title" id="modalConsultaTitle">Detalhes da consulta</h2>
+        <button class="modal__close" data-modal-close aria-label="Fechar">&times;</button>
+      </div>
+      <div class="modal__body" id="modalConsultaBody"></div>
+      <div class="modal__footer">
+        <button class="btn btn--secondary" data-modal-close>Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/utils.js"></script>
+  <script src="../../components/navbar.js"></script>
+  <script src="../../components/sidebar.js"></script>
+  <script src="../../components/footer.js"></script>
+  <script src="../../components/card.js"></script>
+  <script src="../../components/alert.js"></script>
+  <script src="../../components/modal.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/modal.js"></script>
+  <script src="../../js/dropdown.js"></script>
+  <script src="../../js/mock-data-paciente.js"></script>
+  <script src="../../js/dashboard-paciente.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

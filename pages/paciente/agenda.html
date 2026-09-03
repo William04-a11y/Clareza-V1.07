@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda — Clareza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../css/variables.css" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/components.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+</head>
+<body data-layout="app" data-role="paciente" data-active="agenda" data-page-title="Agenda" data-base="../../">
+
+  <div class="app-shell">
+    <div id="sidebarSlot"></div>
+    <div id="navbarSlot"></div>
+
+    <main class="app-main">
+      <div class="flex-between" style="margin-bottom: var(--space-6); flex-wrap: wrap; gap: var(--space-3);">
+        <div>
+          <span class="eyebrow">Sua agenda</span>
+          <h2 style="margin-top: var(--space-1);">Agenda</h2>
+        </div>
+        <button class="btn btn--primary" data-modal-open="modalSolicitarConsulta">+ Solicitar consulta</button>
+      </div>
+
+      <div class="agenda-toolbar">
+        <div class="agenda-nav">
+          <button class="btn btn--ghost btn--icon" id="agendaPrev" aria-label="Semana anterior">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 15 7.5 10l5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="agenda-nav__label" id="agendaLabel"></div>
+          <button class="btn btn--ghost btn--icon" id="agendaNext" aria-label="Próxima semana">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="btn btn--secondary btn--sm" id="agendaToday">Hoje</button>
+        </div>
+      </div>
+
+      <div id="agendaContent"></div>
+
+      <div class="flex flex-gap-4" style="margin-top: var(--space-6); flex-wrap: wrap;">
+        <span class="chart-card__legend-item"><span class="chart-card__legend-dot" style="background-color: var(--color-primary-700);"></span>Confirmada</span>
+        <span class="chart-card__legend-item"><span class="chart-card__legend-dot" style="background-color: var(--color-warning);"></span>Pendente</span>
+        <span class="chart-card__legend-item"><span class="chart-card__legend-dot" style="background-color: var(--color-info);"></span>Concluída</span>
+        <span class="chart-card__legend-item"><span class="chart-card__legend-dot" style="background-color: var(--color-danger);"></span>Cancelada</span>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: solicitar nova consulta -->
+  <div class="modal-backdrop" id="modalSolicitarConsulta" data-modal>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalSolicitarTitle">
+      <div class="modal__header">
+        <h2 class="modal__title" id="modalSolicitarTitle">Solicitar nova consulta</h2>
+        <button class="modal__close" data-modal-close aria-label="Fechar">&times;</button>
+      </div>
+      <div class="modal__body">
+        <div id="solicitarConsultaFeedback"></div>
+        <p class="text-muted text-sm" style="margin-bottom: var(--space-4);">
+          Sua solicitação será enviada à Dra. Marina Costa para confirmação de horário.
+        </p>
+        <div class="grid grid-2" style="gap: var(--space-4);">
+          <div class="field">
+            <label class="field__label" for="solicitarData">Data desejada</label>
+            <input class="input" type="date" id="solicitarData" />
+          </div>
+          <div class="field">
+            <label class="field__label" for="solicitarHora">Horário desejado</label>
+            <input class="input" type="time" id="solicitarHora" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="field__label" for="solicitarModalidade">Modalidade</label>
+          <select class="select" id="solicitarModalidade">
+            <option>Online</option>
+            <option>Presencial</option>
+          </select>
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label class="field__label" for="solicitarObservacao">Observações (opcional)</label>
+          <textarea class="textarea" id="solicitarObservacao" placeholder="Conte brevemente o motivo da consulta ou uma preferência de horário..."></textarea>
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button class="btn btn--secondary" data-modal-close>Cancelar</button>
+        <button class="btn btn--primary" id="confirmarSolicitacao">Enviar solicitação</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: detalhes da consulta -->
+  <div class="modal-backdrop" id="modalDetalhesConsulta" data-modal>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalConsultaTitle">
+      <div class="modal__header">
+        <h2 class="modal__title" id="modalConsultaTitle">Detalhes da consulta</h2>
+        <button class="modal__close" data-modal-close aria-label="Fechar">&times;</button>
+      </div>
+      <div class="modal__body" id="modalConsultaBody"></div>
+      <div class="modal__footer">
+        <button class="btn btn--secondary" data-modal-close>Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/utils.js"></script>
+  <script src="../../components/navbar.js"></script>
+  <script src="../../components/sidebar.js"></script>
+  <script src="../../components/footer.js"></script>
+  <script src="../../components/card.js"></script>
+  <script src="../../components/alert.js"></script>
+  <script src="../../components/modal.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/modal.js"></script>
+  <script src="../../js/dropdown.js"></script>
+  <script src="../../js/mock-data-paciente.js"></script>
+  <script src="../../js/agenda-paciente.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

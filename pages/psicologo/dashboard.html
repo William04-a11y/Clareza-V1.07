@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Clareza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../css/variables.css" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/components.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+</head>
+<body data-layout="app" data-role="psicologo" data-active="dashboard" data-page-title="Dashboard" data-base="../../">
+
+  <div class="app-shell">
+    <div id="sidebarSlot"></div>
+    <div id="navbarSlot"></div>
+
+    <main class="app-main">
+      <div class="flex-between" style="margin-bottom: var(--space-6); flex-wrap: wrap; gap: var(--space-3);">
+        <div>
+          <span class="eyebrow" id="todayLabel"></span>
+          <h2 style="margin-top: var(--space-1);">Olá, Dra. Marina 👋</h2>
+        </div>
+        <button class="btn btn--primary" data-modal-open="modalNovaSessao">+ Nova consulta</button>
+      </div>
+
+      <!-- Cards de métricas -->
+      <div class="grid grid-3" id="statsGrid" style="margin-bottom: var(--space-6);"></div>
+
+      <!-- Gráficos -->
+      <div class="grid grid-split-wide" style="align-items:start; margin-bottom: var(--space-6);">
+        <div class="chart-card">
+          <div class="flex-between">
+            <h3 style="font-size: var(--fs-md);">Consultas nos últimos 7 dias</h3>
+          </div>
+          <canvas id="weeklyVolumeChart" class="chart-canvas" height="200"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <h3 style="font-size: var(--fs-md);">Status das consultas do mês</h3>
+          <canvas id="statusDonutChart" class="chart-canvas" height="180"></canvas>
+          <div class="chart-card__legend" id="statusDonutLegend"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-split-wide" style="align-items:start;">
+
+        <!-- Consultas de hoje -->
+        <section class="table-wrap">
+          <div style="padding: var(--space-5); border-bottom: 1px solid var(--color-border);">
+            <h3>Consultas de hoje</h3>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Horário</th>
+                <th>Paciente</th>
+                <th>Modalidade</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="sessionsTableBody"></tbody>
+          </table>
+        </section>
+
+        <!-- Avisos + pacientes recentes -->
+        <section>
+          <div id="alertsArea" style="display:flex; flex-direction:column; gap: var(--space-3);"></div>
+
+          <div class="card" style="margin-top: var(--space-5);">
+            <div class="card__title">Pacientes recentes</div>
+            <div id="patientsList" style="margin-top: var(--space-4); display:flex; flex-direction:column; gap: var(--space-4);"></div>
+            <div class="card__footer">
+              <a href="pacientes.html" class="btn btn--ghost btn--sm">Ver todos os pacientes</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="modalSlot"></div>
+
+  <script src="../../js/utils.js"></script>
+  <script src="../../components/navbar.js"></script>
+  <script src="../../components/sidebar.js"></script>
+  <script src="../../components/footer.js"></script>
+  <script src="../../components/card.js"></script>
+  <script src="../../components/alert.js"></script>
+  <script src="../../components/modal.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/modal.js"></script>
+  <script src="../../js/dropdown.js"></script>
+  <script src="../../js/mock-data.js"></script>
+  <script src="../../js/charts.js"></script>
+  <script src="../../js/dashboard-psicologo.js"></script>
+  <script src="../../js/main.js"></script>
+
+  <script>
+    document.addEventListener('clareza:ready', function () {
+      const { qs, formatDate } = window.ClarezaUtils;
+      const C = window.ClarezaComponents;
+
+      qs('#todayLabel').textContent = formatDate(new Date(), { weekday: 'long', day: '2-digit', month: 'long' });
+
+      qs('#alertsArea').innerHTML =
+        C.renderAlert('info', { title: 'Lembrete', message: 'Você tem consultas pendentes de confirmação. Revise a agenda para não perder horários.' }) +
+        C.renderAlert('warning', { title: 'Prontuário incompleto', message: 'Fernanda Souza aguarda o registro da última sessão.', dismissible: true });
+    });
+  </script>
+</body>
+</html>

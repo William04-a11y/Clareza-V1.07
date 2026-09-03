@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clareza — Gestão psicológica com clareza e cuidado</title>
+  <meta name="description" content="Clareza é a plataforma que organiza a jornada entre psicólogos e pacientes: agenda, prontuários e acompanhamento em um só lugar." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body data-layout="public">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <div id="navbarSlot"></div>
+
+  <main id="conteudo">
+
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" style="padding: var(--space-9) 0; overflow: hidden; position: relative;">
+      <div class="container grid grid-split-hero">
+        <div>
+          <span class="eyebrow">Plataforma para psicólogos e pacientes</span>
+          <h1 style="margin-top: var(--space-4); max-width: 14ch;">Clareza na jornada de cada sessão.</h1>
+          <p class="text-muted" style="font-size: var(--fs-md); max-width: 46ch; margin-top: var(--space-4);">
+            Agenda, prontuários e comunicação organizados em um só lugar — para que o psicólogo cuide de quem importa,
+            e o paciente sinta o próprio progresso com clareza.
+          </p>
+          <div class="flex flex-gap-3" style="margin-top: var(--space-6);">
+            <a href="pages/auth/cadastro-psicologo.html" class="btn btn--primary btn--lg">Sou psicólogo(a)</a>
+            <a href="pages/auth/cadastro-paciente.html" class="btn btn--secondary btn--lg">Sou paciente</a>
+          </div>
+          <p class="text-faint text-sm" style="margin-top: var(--space-4);">
+            Versão de demonstração — dados fictícios, sem necessidade de servidor.
+          </p>
+        </div>
+
+        <!-- Elemento-assinatura: ondulações concêntricas que se assentam,
+             remetendo à clareza que emerge quando a "água" da mente se acalma. -->
+        <div aria-hidden="true" style="display:flex; align-items:center; justify-content:center;">
+          <svg width="100%" height="380" viewBox="0 0 420 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="210" cy="190" r="170" stroke="var(--color-primary-100)" stroke-width="1"/>
+            <circle cx="210" cy="190" r="140" stroke="var(--color-primary-100)" stroke-width="1"/>
+            <circle cx="210" cy="190" r="110" stroke="var(--color-accent-100)" stroke-width="1.4"/>
+            <circle cx="210" cy="190" r="80" stroke="var(--color-primary-500)" stroke-width="1.4" opacity="0.5"/>
+            <circle cx="210" cy="190" r="50" stroke="var(--color-primary-700)" stroke-width="1.8" opacity="0.7"/>
+            <circle cx="210" cy="190" r="22" fill="var(--color-primary-700)"/>
+            <circle cx="210" cy="190" r="8" fill="var(--color-gold-500)"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== SOBRE ============================== -->
+    <section id="sobre" style="padding: var(--space-9) 0; background-color: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+      <div class="container grid grid-3">
+        <div>
+          <h3>Organização clínica</h3>
+          <p class="text-muted" style="margin-top: var(--space-2);">Agenda, prontuários e histórico de sessões reunidos, sem planilhas soltas.</p>
+        </div>
+        <div>
+          <h3>Comunicação segura</h3>
+          <p class="text-muted" style="margin-top: var(--space-2);">Um canal único entre psicólogo e paciente, dentro do contexto do acompanhamento.</p>
+        </div>
+        <div>
+          <h3>Progresso visível</h3>
+          <p class="text-muted" style="margin-top: var(--space-2);">Indicadores simples que ajudam o paciente a enxergar sua própria evolução.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== RECURSOS ============================== -->
+    <section id="recursos" style="padding: var(--space-9) 0;">
+      <div class="container">
+        <span class="eyebrow">Recursos</span>
+        <h2 style="margin-top: var(--space-3); max-width: 20ch;">Tudo o que a rotina clínica precisa, em um painel só.</h2>
+
+        <div class="grid grid-4" style="margin-top: var(--space-7);">
+          <div class="card">
+            <div class="card__title">Agenda inteligente</div>
+            <p class="text-muted text-sm" style="margin-top: var(--space-2);">Visualize sessões da semana e evite conflitos de horário.</p>
+          </div>
+          <div class="card">
+            <div class="card__title">Prontuário digital</div>
+            <p class="text-muted text-sm" style="margin-top: var(--space-2);">Registros de sessão organizados por paciente e por data.</p>
+          </div>
+          <div class="card">
+            <div class="card__title">Tarefas terapêuticas</div>
+            <p class="text-muted text-sm" style="margin-top: var(--space-2);">Envie exercícios entre sessões e acompanhe a conclusão.</p>
+          </div>
+          <div class="card">
+            <div class="card__title">Mensagens contextuais</div>
+            <p class="text-muted text-sm" style="margin-top: var(--space-2);">Converse com seus pacientes sem sair da plataforma.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PLANOS ============================== -->
+    <section id="planos" style="padding: var(--space-9) 0; background-color: var(--color-primary-050);">
+      <div class="container" style="text-align:center;">
+        <span class="eyebrow">Planos</span>
+        <h2 style="margin-top: var(--space-3);">Comece agora com a versão de demonstração</h2>
+        <p class="text-muted" style="max-width: 52ch; margin: var(--space-3) auto 0;">
+          Esta versão 1.07 utiliza dados fictícios armazenados apenas no seu navegador — ideal para validar o fluxo antes da integração com backend.
+        </p>
+        <div class="flex flex-gap-3" style="justify-content:center; margin-top: var(--space-6);">
+          <a href="pages/auth/cadastro.html" class="btn btn--primary btn--lg">Criar conta de demonstração</a>
+          <a href="pages/auth/login.html" class="btn btn--ghost btn--lg">Já tenho conta</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footerSlot"></div>
+
+  <!-- Utilitários -->
+  <script src="js/utils.js"></script>
+  <!-- Componentes -->
+  <script src="components/navbar.js"></script>
+  <script src="components/sidebar.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="components/card.js"></script>
+  <script src="components/alert.js"></script>
+  <script src="components/modal.js"></script>
+  <!-- Controladores -->
+  <script src="js/navigation.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/dropdown.js"></script>
+  <!-- Bootstrap -->
+  <script src="js/main.js"></script>
+</body>
+</html>

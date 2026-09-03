@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu psicólogo — Clareza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../css/variables.css" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/components.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+</head>
+<body data-layout="app" data-role="paciente" data-active="psicologo" data-page-title="Meu psicólogo" data-base="../../">
+
+  <div class="app-shell">
+    <div id="sidebarSlot"></div>
+    <div id="navbarSlot"></div>
+
+    <main class="app-main">
+      <div style="margin-bottom: var(--space-6);">
+        <span class="eyebrow">Seu profissional</span>
+        <h2 style="margin-top: var(--space-1);">Meu psicólogo</h2>
+      </div>
+
+      <div class="grid grid-split" style="align-items:start;">
+
+        <!-- Cartão de perfil -->
+        <div class="card" style="text-align:center; padding: var(--space-8) var(--space-5);">
+          <div class="avatar avatar--xl" id="psicologoAvatar" style="margin: 0 auto var(--space-5);"></div>
+          <h3 id="psicologoNome" style="margin-bottom: var(--space-2);"></h3>
+          <span class="badge badge--info" id="psicologoCrp" style="margin-bottom: var(--space-3); display:inline-flex;"></span>
+          <p class="text-muted text-sm" id="psicologoEspecialidade"></p>
+
+          <div class="flex flex-gap-3" style="justify-content:center; margin-top: var(--space-6); flex-wrap: wrap;">
+            <a href="mensagens.html" class="btn btn--primary">Enviar mensagem</a>
+            <a href="agenda.html" class="btn btn--secondary">Ver agenda</a>
+          </div>
+        </div>
+
+        <!-- Sobre e contato -->
+        <div class="card">
+          <div class="card__title">Sobre</div>
+          <p class="text-muted text-sm" id="psicologoBio" style="margin-top: var(--space-3);"></p>
+
+          <hr />
+
+          <div class="card__title">Informações de contato</div>
+          <div id="psicologoContato" style="margin-top: var(--space-2);"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../../js/utils.js"></script>
+  <script src="../../components/navbar.js"></script>
+  <script src="../../components/sidebar.js"></script>
+  <script src="../../components/footer.js"></script>
+  <script src="../../components/card.js"></script>
+  <script src="../../components/alert.js"></script>
+  <script src="../../components/modal.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/modal.js"></script>
+  <script src="../../js/dropdown.js"></script>
+  <script src="../../js/mock-data-paciente.js"></script>
+  <script src="../../js/psicologo-paciente.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

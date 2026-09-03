@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Criar conta de psicólogo — Clareza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../css/variables.css" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/components.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+</head>
+<body data-layout="public" data-base="../../">
+
+  <div class="auth-shell">
+    <aside class="auth-shell__aside">
+      <a href="../../index.html" style="display:flex; align-items:center; gap: var(--space-3); font-family: var(--font-display); font-size: var(--fs-lg); color: var(--color-text-inverse);">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.4" opacity="0.35"/>
+          <circle cx="14" cy="14" r="8.5" stroke="currentColor" stroke-width="1.4" opacity="0.65"/>
+          <circle cx="14" cy="14" r="4" fill="currentColor"/>
+        </svg>
+        Clareza
+      </a>
+
+      <div>
+        <span class="badge" style="background-color: rgba(245,247,245,0.12); color: var(--color-text-inverse); margin-bottom: var(--space-4);">Conta profissional</span>
+        <h2 style="color: var(--color-text-inverse); max-width: 18ch;">Sua prática clínica, mais organizada.</h2>
+        <p style="color: rgba(245,247,245,0.75); max-width: 34ch; margin-top: var(--space-3);">
+          Agenda, prontuários e comunicação com pacientes em um painel só.
+        </p>
+      </div>
+
+      <p class="text-mono" style="font-size: var(--fs-xs); color: rgba(245,247,245,0.5);">Clareza v1.07 · ambiente de demonstração</p>
+    </aside>
+
+    <div class="auth-shell__form">
+      <div class="auth-card" style="max-width: 480px;">
+        <span class="eyebrow">Sou psicólogo(a)</span>
+        <h1 style="font-size: var(--fs-2xl); margin-top: var(--space-2);">Criar conta profissional</h1>
+        <p class="text-muted" style="margin-top: var(--space-2);">Preencha seus dados profissionais para começar.</p>
+
+        <div id="cadastroFeedback" style="margin-top: var(--space-5);"></div>
+
+        <form id="cadastroPsicologoForm" style="margin-top: var(--space-5);" novalidate>
+
+          <div class="field">
+            <label class="field__label" for="name">Nome completo</label>
+            <input class="input" type="text" id="name" name="name" placeholder="Seu nome completo" autocomplete="name" />
+            <span class="field__error"></span>
+          </div>
+
+          <div class="grid grid-2" style="gap: var(--space-4);">
+            <div class="field">
+              <label class="field__label" for="birthDate">Data de nascimento</label>
+              <input class="input" type="date" id="birthDate" name="birthDate" autocomplete="bday" />
+              <span class="field__error"></span>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="cpf">CPF</label>
+              <input class="input" type="text" id="cpf" name="cpf" placeholder="000.000.000-00" inputmode="numeric" maxlength="14" />
+              <span class="field__error"></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="crp">CRP (Registro no Conselho)</label>
+            <input class="input" type="text" id="crp" name="crp" placeholder="06/012345" inputmode="numeric" maxlength="9" />
+            <span class="field__hint">Formato: região/número, por exemplo 06/012345.</span>
+            <span class="field__error"></span>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="email">E-mail profissional</label>
+            <input class="input" type="email" id="email" name="email" placeholder="voce@exemplo.com" autocomplete="email" />
+            <span class="field__error"></span>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="password">Senha</label>
+            <div class="input-group">
+              <input class="input" type="password" id="password" name="password" placeholder="Mínimo de 6 caracteres" autocomplete="new-password" />
+              <button type="button" class="input-group__icon" data-toggle-password="password"></button>
+            </div>
+            <span class="field__hint">Use pelo menos 6 caracteres.</span>
+            <span class="field__error"></span>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="confirmPassword">Confirmar senha</label>
+            <div class="input-group">
+              <input class="input" type="password" id="confirmPassword" name="confirmPassword" placeholder="Repita a senha" autocomplete="new-password" />
+              <button type="button" class="input-group__icon" data-toggle-password="confirmPassword"></button>
+            </div>
+            <span class="field__error"></span>
+          </div>
+
+          <div class="field">
+            <label class="checkbox-row" for="terms">
+              <input type="checkbox" id="terms" name="terms" />
+              Li e concordo com os termos de uso e a política de privacidade.
+            </label>
+            <span class="field__error"></span>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block btn--lg">Criar conta profissional</button>
+        </form>
+
+        <p class="text-center text-sm" style="margin-top: var(--space-6);">
+          Já tem conta? <a href="login.html">Entrar</a><br/>
+          <a href="cadastro.html" class="text-faint">← Escolher outro tipo de perfil</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/utils.js"></script>
+  <script src="../../components/navbar.js"></script>
+  <script src="../../components/sidebar.js"></script>
+  <script src="../../components/footer.js"></script>
+  <script src="../../components/card.js"></script>
+  <script src="../../components/alert.js"></script>
+  <script src="../../components/modal.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/modal.js"></script>
+  <script src="../../js/dropdown.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

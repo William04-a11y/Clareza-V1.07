@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mensagens — Clareza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../css/variables.css" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/components.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+</head>
+<body data-layout="app" data-role="paciente" data-active="mensagens" data-page-title="Mensagens" data-base="../../">
+
+  <div class="app-shell">
+    <div id="sidebarSlot"></div>
+    <div id="navbarSlot"></div>
+
+    <main class="app-main">
+      <div style="margin-bottom: var(--space-6);">
+        <span class="eyebrow">Conversa</span>
+        <h2 style="margin-top: var(--space-1);">Mensagens</h2>
+      </div>
+
+      <div class="card chat-panel">
+        <div class="chat-panel__header">
+          <div class="avatar avatar--sm">MC</div>
+          <div>
+            <div style="font-weight: var(--fw-medium); font-size: var(--fs-sm);">Dra. Marina Costa</div>
+            <div class="text-faint text-xs">Geralmente responde em até 24h</div>
+          </div>
+        </div>
+
+        <div class="chat-panel__messages" id="chatMessages"></div>
+
+        <form class="chat-panel__form" id="chatForm">
+          <input class="input" type="text" id="chatInput" placeholder="Escreva sua mensagem..." autocomplete="off" />
+          <button type="submit" class="btn btn--primary">Enviar</button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="../../js/utils.js"></script>
+  <script src="../../components/navbar.js"></script>
+  <script src="../../components/sidebar.js"></script>
+  <script src="../../components/footer.js"></script>
+  <script src="../../components/card.js"></script>
+  <script src="../../components/alert.js"></script>
+  <script src="../../components/modal.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/modal.js"></script>
+  <script src="../../js/dropdown.js"></script>
+  <script src="../../js/mensagens-paciente.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

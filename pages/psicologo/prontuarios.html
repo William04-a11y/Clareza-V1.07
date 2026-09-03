@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prontuários — Clareza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../css/variables.css" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/components.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+</head>
+<body data-layout="app" data-role="psicologo" data-active="prontuarios" data-page-title="Prontuários" data-base="../../">
+
+  <div class="app-shell">
+    <div id="sidebarSlot"></div>
+    <div id="navbarSlot"></div>
+
+    <main class="app-main">
+      <div class="flex-between" style="margin-bottom: var(--space-6); flex-wrap: wrap; gap: var(--space-3);">
+        <div>
+          <span class="eyebrow" id="recordsCount">Registro clínico</span>
+          <h2 style="margin-top: var(--space-1);">Prontuários</h2>
+        </div>
+        <button type="button" class="btn btn--primary" data-modal-open="modalNovoProntuario">+ Novo Prontuário</button>
+      </div>
+
+      <div class="toolbar">
+        <div class="input-group toolbar__search">
+          <span class="input-group__icon">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/><path d="m17 17-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
+          <input class="input" type="search" id="recordSearch" placeholder="Buscar por paciente ou nº do prontuário..." />
+        </div>
+
+        <select class="select" id="recordPatientFilter" style="max-width: 220px;">
+          <option value="todos">Todos os pacientes</option>
+        </select>
+
+        <input class="input" type="date" id="recordDateFilter" style="max-width: 180px;" aria-label="Filtrar por data da última sessão" />
+
+        <button type="button" class="filter-chip is-active" data-status-filter="todos">Todos</button>
+        <button type="button" class="filter-chip" data-status-filter="ativo">Ativos</button>
+        <button type="button" class="filter-chip" data-status-filter="arquivado">Arquivados</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Paciente</th>
+              <th>Nº do prontuário</th>
+              <th>Última sessão</th>
+              <th>Última atualização</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="recordsTableBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: novo prontuário -->
+  <div class="modal-backdrop" id="modalNovoProntuario" data-modal>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalNovoProntuarioTitle">
+      <div class="modal__header">
+        <h2 class="modal__title" id="modalNovoProntuarioTitle">Novo prontuário</h2>
+        <button class="modal__close" data-modal-close aria-label="Fechar">&times;</button>
+      </div>
+      <form id="formNovoProntuario" novalidate>
+        <div class="modal__body">
+          <div class="field">
+            <label class="field__label" for="novoProntuarioPaciente">Paciente</label>
+            <select class="select" id="novoProntuarioPaciente" name="patientId">
+              <option value="">Selecione um paciente...</option>
+            </select>
+            <span class="field__error"></span>
+          </div>
+
+          <div class="grid grid-2" style="gap: var(--space-4);">
+            <div class="field">
+              <label class="field__label" for="novoProntuarioNumero">Número do prontuário</label>
+              <input class="input" type="text" id="novoProntuarioNumero" readonly />
+              <span class="field__hint">Gerado automaticamente ao salvar.</span>
+            </div>
+            <div class="field">
+              <label class="field__label" for="novoProntuarioSessaoData">Data da 1ª sessão</label>
+              <input class="input" type="date" id="novoProntuarioSessaoData" name="sessionDate" />
+              <span class="field__error"></span>
+            </div>
+          </div>
+
+          <p class="text-muted text-sm">Após criado, você poderá preencher o relato do paciente, a análise clínica e os demais campos do registro clínico na tela do prontuário.</p>
+        </div>
+        <div class="modal__footer">
+          <button type="button" class="btn btn--secondary" data-modal-close>Cancelar</button>
+          <button type="submit" class="btn btn--primary">Criar prontuário</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../../js/utils.js"></script>
+  <script src="../../components/navbar.js"></script>
+  <script src="../../components/sidebar.js"></script>
+  <script src="../../components/footer.js"></script>
+  <script src="../../components/card.js"></script>
+  <script src="../../components/alert.js"></script>
+  <script src="../../components/modal.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/modal.js"></script>
+  <script src="../../js/dropdown.js"></script>
+  <script src="../../js/mock-data.js"></script>
+  <script src="../../js/mock-data-prontuarios.js"></script>
+  <script src="../../js/prontuarios.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

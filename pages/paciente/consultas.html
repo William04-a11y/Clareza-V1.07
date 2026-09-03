@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minhas consultas — Clareza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../css/variables.css" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/components.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+</head>
+<body data-layout="app" data-role="paciente" data-active="consultas" data-page-title="Minhas consultas" data-base="../../">
+
+  <div class="app-shell">
+    <div id="sidebarSlot"></div>
+    <div id="navbarSlot"></div>
+
+    <main class="app-main">
+      <div class="flex-between" style="margin-bottom: var(--space-6); flex-wrap: wrap; gap: var(--space-3);">
+        <div>
+          <span class="eyebrow" id="consultasCount">Minhas consultas</span>
+          <h2 style="margin-top: var(--space-1);">Consultas</h2>
+        </div>
+        <a href="agenda.html" class="btn btn--primary">+ Solicitar consulta</a>
+      </div>
+
+      <div class="tabs">
+        <button type="button" class="tab is-active" data-tab="proximas">Próximas</button>
+        <button type="button" class="tab" data-tab="anteriores">Anteriores</button>
+        <button type="button" class="tab" data-tab="todas">Todas</button>
+      </div>
+
+      <div class="toolbar">
+        <div class="input-group toolbar__search">
+          <span class="input-group__icon">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/><path d="m17 17-3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
+          <input class="input" type="search" id="consultaSearch" placeholder="Buscar por profissional ou modalidade..." />
+        </div>
+
+        <button type="button" class="filter-chip is-active" data-status-filter="todos">Todos os status</button>
+        <button type="button" class="filter-chip" data-status-filter="confirmada">Confirmada</button>
+        <button type="button" class="filter-chip" data-status-filter="pendente">Pendente</button>
+        <button type="button" class="filter-chip" data-status-filter="concluida">Concluída</button>
+        <button type="button" class="filter-chip" data-status-filter="cancelada">Cancelada</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Horário</th>
+              <th>Profissional</th>
+              <th>Modalidade</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="consultasTableBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: detalhes da consulta -->
+  <div class="modal-backdrop" id="modalDetalhesConsulta" data-modal>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalConsultaTitle">
+      <div class="modal__header">
+        <h2 class="modal__title" id="modalConsultaTitle">Detalhes da consulta</h2>
+        <button class="modal__close" data-modal-close aria-label="Fechar">&times;</button>
+      </div>
+      <div class="modal__body" id="modalConsultaBody"></div>
+      <div class="modal__footer">
+        <button class="btn btn--secondary" data-modal-close>Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/utils.js"></script>
+  <script src="../../components/navbar.js"></script>
+  <script src="../../components/sidebar.js"></script>
+  <script src="../../components/footer.js"></script>
+  <script src="../../components/card.js"></script>
+  <script src="../../components/alert.js"></script>
+  <script src="../../components/modal.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/modal.js"></script>
+  <script src="../../js/dropdown.js"></script>
+  <script src="../../js/mock-data-paciente.js"></script>
+  <script src="../../js/consultas-paciente.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>
